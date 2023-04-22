@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Days from "./components/DaysRow";
+import Days from "./components/Days";
 
 const Table = styled.table`
   display: flex;
