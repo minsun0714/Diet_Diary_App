@@ -7,7 +7,7 @@ const Table = styled.table`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-item: center;
+  align-items: center;
   border: 1px solid transparent;
   border-radius: 20px;
   height: 85vh;
@@ -18,14 +18,16 @@ const Table = styled.table`
 `;
 
 const Year = styled.caption`
+  position: absolute;
   font-size: 50px;
-  margin-top: -460px;
-  margin-bottom: 20px;
+  margin-top: -600px;
   color: gray;
   text-shadow: 2px 2px 4px white;
 `;
 
 const Month = styled.caption`
+  position: absolute;
+  margin-bottom: 450px;
   font-size: 70px;
   color: white;
   text-shadow: 2px 2px 4px pink;
