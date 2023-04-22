@@ -2,15 +2,17 @@ import React from "react";
 import styled from "styled-components";
 
 const DaysContainer = styled.tbody`
-  margin: 30px 11%;
+  position: absolute;
+  margin-bottom: 290px;
+  margin-left: 6.5%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-item: center;
+  align-items: center;
 `;
 const Day = styled.th`
   font-size: 40px;
-  letter-spacing: 8rem;
+  letter-spacing: 8.25rem;
   color: white;
   text-shadow: 2px 2px 0.5px rgba(0, 0, 0, 0.5);
 `;
