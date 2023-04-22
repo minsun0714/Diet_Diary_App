@@ -1,10 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
+const DatesContainer = styled.tbody`
+  margin: 30px 11%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-item: center;
+`;
+
 function Dates() {
-  const now = new Date();
-  const year = now.getFullYear();
-  const month = now.getMonth();
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.getMonth();
 
   // 이번 달 1일이 무슨 요일인지 구함
   const firstDayOfMonth = new Date(year, month, 1).getDay();
@@ -30,6 +38,15 @@ function Dates() {
 
   console.log(daysOfThisMonth);
 
-  return null;
+  const now = Date.now();
+  const dates = daysOfThisMonth.map((week, i) => (
+    <tr key={now + i}>
+      {week.map((date, j) => (
+        <th key={now + j}>{date}</th>
+      ))}
+    </tr>
+  ));
+
+  return <DatesContainer>{dates}</DatesContainer>;
 }
 export default Dates;
