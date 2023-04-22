@@ -2,11 +2,23 @@ import React from "react";
 import styled from "styled-components";
 
 const DatesContainer = styled.tbody`
-  margin: 30px 11%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-item: center;
+  align-items: center;
+  margin-top: 13vw;
+  border-collapse: collapse;
+`;
+const EachDate = styled.th`
+  font-size: 40px;
+  padding: 13px 60px;
+  margin: 0 2px;
+  width: 50px;
+  text-shadow: 1px 1px 4px gray;
+  &:hover {
+    color: pink;
+    cursor: pointer;
+  }
 `;
 
 function Dates() {
@@ -39,14 +51,14 @@ function Dates() {
   console.log(daysOfThisMonth);
 
   const now = Date.now();
-  const dates = daysOfThisMonth.map((week, i) => (
+  const showDates = daysOfThisMonth.map((week, i) => (
     <tr key={now + i}>
       {week.map((date, j) => (
-        <th key={now + j}>{date}</th>
+        <EachDate key={now + j}>{date ? date : null}</EachDate>
       ))}
     </tr>
   ));
 
-  return <DatesContainer>{dates}</DatesContainer>;
+  return <DatesContainer>{showDates}</DatesContainer>;
 }
 export default Dates;
