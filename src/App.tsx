@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Days from "./components/Days";
+import Dates from "./components/Dates";
 
 const Table = styled.table`
   display: flex;
@@ -36,6 +37,7 @@ function App() {
       <Year>2023</Year>
       <Month>4월</Month>
       <Days />
+      <Dates />
     </Table>
   );
 }
