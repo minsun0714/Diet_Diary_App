@@ -2,19 +2,15 @@ import React from "react";
 import styled from "styled-components";
 
 const DatesContainer = styled.tbody`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 13vw;
-  border-collapse: collapse;
+  margin-top: 200px;
 `;
+
 const EachDate = styled.th`
   font-size: 40px;
-  padding: 13px 60px;
-  margin: 0 2px;
-  width: 50px;
+  padding-top: 22px;
+  width: 10vw;
   text-shadow: 1px 1px 4px gray;
+
   &:hover {
     color: pink;
     cursor: pointer;
@@ -47,8 +43,6 @@ function Dates() {
       if (daysOfThisMonth[i][j] === lastDateOfMonth) break;
     }
   }
-
-  console.log(daysOfThisMonth);
 
   const now = Date.now();
   const showDates = daysOfThisMonth.map((week, i) => (
