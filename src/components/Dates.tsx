@@ -9,8 +9,8 @@ const EachDate = styled.th`
   font-size: 40px;
   padding-top: 22px;
   width: 10vw;
-  text-shadow: 1px 1px 4px gray;
-
+  text-shadow: 1px 1px 2px gray;
+  color: rgba(0, 0, 0, 0.5);
   &:hover {
     color: pink;
     cursor: pointer;
@@ -21,7 +21,6 @@ function Dates() {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth();
-
   // 이번 달 1일이 무슨 요일인지 구함
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   // 이번 달이 며칠까지 있는지 구함
