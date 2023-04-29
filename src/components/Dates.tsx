@@ -4,14 +4,19 @@ import styled from "styled-components";
 const DatesContainer = styled.tbody`
   margin-top: 200px;
 `;
-const EachDate = styled.th`
+
+type DatesProps = {
+  today: number;
+};
+//
+const EachDate = styled.th<DatesProps>`
   font-size: 40px;
   padding-top: 22px;
   width: 10vw;
   text-shadow: 1px 1px 2px gray;
   color: ${(props) => {
-    return "red";
-  }}
+    return props.today === props.children ? "red" : "black";
+  }};
   &:hover {
     color: pink;
     cursor: pointer;
@@ -24,13 +29,13 @@ function Dates() {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth();
-
   // 지난 달 마지막 날짜를 구함
   const lastDateOfLastMonth: LastDate = new Date(
     year,
     month,
     0
   ).getDate() as LastDate;
+
   // 이번 달 1일이 무슨 요일인지 구함
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   // 이번 달이 며칠까지 있는지 구함
@@ -51,10 +56,12 @@ function Dates() {
       for (let k = 1; k <= firstDayOfMonth; k++) {
         daysOfThisMonth[0][firstDayOfMonth - k] = lastDateOfLastMonth - k + 1;
       }
-      continue;
     }
     for (let j = 0; j < 7; j++) {
-      if (daysOfThisMonth[i][j - 1] && daysOfThisMonth[i][j] !== 1) {
+      if (daysOfThisMonth[i][j]) {
+        continue;
+      }
+      if (daysOfThisMonth[i][j - 1]) {
         daysOfThisMonth[i][j] = daysOfThisMonth[i][j - 1] + 1;
       } else if (daysOfThisMonth[i - 1]?.[6]) {
         daysOfThisMonth[i][j] = daysOfThisMonth[i - 1][6] + 1;
@@ -67,10 +74,13 @@ function Dates() {
   }
 
   const now = Date.now();
+  const today = date.getDate();
   const showDates = daysOfThisMonth.map((week, i) => (
     <tr key={now + i}>
       {week.map((date, j) => (
-        <EachDate key={now + j}>{date ? date : null}</EachDate>
+        <EachDate key={now + j} today={today}>
+          {date ? date : null}
+        </EachDate>
       ))}
     </tr>
   ));
