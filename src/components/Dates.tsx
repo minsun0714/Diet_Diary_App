@@ -5,11 +5,11 @@ const DatesContainer = styled.tbody`
   margin-top: 200px;
 `;
 
-type DatesProps = {
+type EachDatesProps = {
   today: number;
 };
 //
-const EachDate = styled.th<DatesProps>`
+const EachDate = styled.th<EachDatesProps>`
   font-size: 40px;
   padding-top: 22px;
   width: 10vw;
@@ -24,12 +24,12 @@ const EachDate = styled.th<DatesProps>`
 `;
 
 type LastDate = 28 | 29 | 30 | 31;
-interface Props {
+interface DatesProps {
   year: number;
   month: number;
 }
 
-function Dates({ year, month }: Props): JSX.Element {
+function Dates({ year, month }: DatesProps): JSX.Element {
   // function Dates({ year, month }): {
   const date = new Date();
   // const year = date.getFullYear();
