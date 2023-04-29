@@ -39,7 +39,9 @@ function Dates() {
       } else if (daysOfThisMonth[i - 1]?.[6]) {
         daysOfThisMonth[i][j] = daysOfThisMonth[i - 1][6] + 1;
       }
-      if (daysOfThisMonth[i][j] === lastDateOfMonth) break;
+      if (daysOfThisMonth[i][j - 1] === lastDateOfMonth) {
+        daysOfThisMonth[i][j] = 1;
+      }
     }
   }
 
