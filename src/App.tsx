@@ -21,27 +21,56 @@ const Table = styled.table`
   }
 `;
 
-const Year = styled.caption`
+const YearWrapper = styled.caption`
+  display: flex;
   position: absolute;
+`;
+
+const Year = styled.div`
   font-size: 50px;
+  margin-top: 10px;
   margin-bottom: 700px;
   color: gray;
   text-shadow: 2px 2px 4px white;
 `;
 
-const Month = styled.caption`
+const MonthWrapper = styled.caption`
+  display: flex;
   position: absolute;
   margin-bottom: 500px;
+`;
+
+const Month = styled.div`
   font-size: 70px;
   color: white;
   text-shadow: 2px 2px 4px pink;
 `;
 
+const Btn = styled.button`
+  background-color: rgba(0, 0, 0, 0.05);
+  height: 50px;
+  width: 50px;
+  margin: 15px 30px;
+  border: rgba(0, 0, 0, 0.1) 2px solid;
+  border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 function App() {
   return (
     <Table>
-      <Year>2023</Year>
-      <Month>4월</Month>
+      <YearWrapper>
+        <Btn>◀️</Btn>
+        <Year>2023</Year>
+        <Btn>▶️</Btn>
+      </YearWrapper>
+      <MonthWrapper>
+        <Btn>◀️</Btn>
+        <Month>4월</Month>
+        <Btn>▶️</Btn>
+      </MonthWrapper>
       <Days />
       <Dates />
     </Table>
