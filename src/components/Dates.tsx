@@ -15,7 +15,7 @@ const EachDate = styled.th<DatesProps>`
   width: 10vw;
   text-shadow: 1px 1px 2px gray;
   color: ${(props) => {
-    return props.today === props.children ? "red" : "black";
+    return props.today === props.children ? "black" : "black";
   }};
   &:hover {
     color: pink;
