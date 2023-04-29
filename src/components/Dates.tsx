@@ -18,17 +18,27 @@ const EachDate = styled.th`
   }
 `;
 
+type LastDate = 28 | 29 | 30 | 31;
+
 function Dates() {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth();
 
   // 지난 달 마지막 날짜를 구함
-  const lastDateOfLastMonth = new Date(year, month, 0).getDate();
+  const lastDateOfLastMonth: LastDate = new Date(
+    year,
+    month,
+    0
+  ).getDate() as LastDate;
   // 이번 달 1일이 무슨 요일인지 구함
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   // 이번 달이 며칠까지 있는지 구함
-  const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+  const lastDateOfMonth: LastDate = new Date(
+    year,
+    month + 1,
+    0
+  ).getDate() as LastDate;
 
   // 날짜를 채워줄 2차원 빈 배열 선언
   let daysOfThisMonth = [...Array(6)].map((_) => [...Array(7)].map(() => 0));
