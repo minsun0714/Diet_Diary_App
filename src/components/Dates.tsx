@@ -4,13 +4,14 @@ import styled from "styled-components";
 const DatesContainer = styled.tbody`
   margin-top: 200px;
 `;
-
 const EachDate = styled.th`
   font-size: 40px;
   padding-top: 22px;
   width: 10vw;
   text-shadow: 1px 1px 2px gray;
-  color: rgba(0, 0, 0, 0.5);
+  color: ${(props) => {
+    return "red";
+  }}
   &:hover {
     color: pink;
     cursor: pointer;
@@ -21,6 +22,9 @@ function Dates() {
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth();
+
+  // 지난 달 마지막 날짜를 구함
+  const lastDateOfLastMonth = new Date(year, month, 0).getDate();
   // 이번 달 1일이 무슨 요일인지 구함
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   // 이번 달이 며칠까지 있는지 구함
@@ -33,12 +37,19 @@ function Dates() {
   daysOfThisMonth[0][day] = 1;
 
   for (let i = 0; i < daysOfThisMonth.length; i++) {
+    if (i === 0) {
+      for (let k = 1; k <= firstDayOfMonth; k++) {
+        daysOfThisMonth[0][firstDayOfMonth - k] = lastDateOfLastMonth - k + 1;
+      }
+      continue;
+    }
     for (let j = 0; j < 7; j++) {
-      if (daysOfThisMonth[i][j - 1]) {
+      if (daysOfThisMonth[i][j - 1] && daysOfThisMonth[i][j] !== 1) {
         daysOfThisMonth[i][j] = daysOfThisMonth[i][j - 1] + 1;
       } else if (daysOfThisMonth[i - 1]?.[6]) {
         daysOfThisMonth[i][j] = daysOfThisMonth[i - 1][6] + 1;
       }
+
       if (daysOfThisMonth[i][j - 1] === lastDateOfMonth) {
         daysOfThisMonth[i][j] = 1;
       }
