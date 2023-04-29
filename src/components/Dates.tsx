@@ -24,11 +24,16 @@ const EachDate = styled.th<DatesProps>`
 `;
 
 type LastDate = 28 | 29 | 30 | 31;
+interface Props {
+  year: number;
+  month: number;
+}
 
-function Dates() {
+function Dates({ year, month }: Props): JSX.Element {
+  // function Dates({ year, month }): {
   const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth();
+  // const year = date.getFullYear();
+  // const month = date.getMonth();
   // 지난 달 마지막 날짜를 구함
   const lastDateOfLastMonth: LastDate = new Date(
     year,

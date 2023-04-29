@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Days from "./components/Days";
 import Dates from "./components/Dates";
@@ -59,20 +59,44 @@ const Btn = styled.button`
 `;
 
 function App() {
+  const date = new Date();
+  const [year, setYear] = useState(date.getFullYear());
+  const [month, setMonth] = useState(date.getMonth());
+  const handleClickPrevYear = () => {
+    setYear(year - 1);
+    console.log(year);
+  };
+  const handleClickNextYear = () => {
+    setYear(year + 1);
+    console.log(year);
+  };
+  const handleClickPrevMonth = () => {
+    if (month === 0) {
+      setYear(year - 1);
+      setMonth(11);
+    } else setMonth(month - 1);
+  };
+  const handleClickNextMonth = () => {
+    if (month === 11) {
+      setYear(year + 1);
+      setMonth(0);
+    } else setMonth(month + 1);
+  };
+
   return (
     <Table>
       <YearWrapper>
-        <Btn>◀️</Btn>
-        <Year>2023</Year>
-        <Btn>▶️</Btn>
+        <Btn onClick={handleClickPrevYear}>◀️</Btn>
+        <Year>{year}</Year>
+        <Btn onClick={handleClickNextYear}>▶️</Btn>
       </YearWrapper>
       <MonthWrapper>
-        <Btn>◀️</Btn>
-        <Month>4월</Month>
-        <Btn>▶️</Btn>
+        <Btn onClick={handleClickPrevMonth}>◀️</Btn>
+        <Month>{month + 1}월</Month>
+        <Btn onClick={handleClickNextMonth}>▶️</Btn>
       </MonthWrapper>
       <Days />
-      <Dates />
+      <Dates year={year} month={month} />
     </Table>
   );
 }
