@@ -20,7 +20,6 @@ interface Props {
 }
 interface Action {
   type: string;
-  [key: string]: any;
 }
 export const reducer = (
   state: Props = { month: date.getMonth() },
