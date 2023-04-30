@@ -30,7 +30,7 @@ interface DatesProps {
 }
 
 // year, month를 App.tsx에서 prop으로 받아옴
-function Dates({ year, month }: DatesProps): JSX.Element {
+function Dates({ year, month }: DatesProps) {
   const date = new Date();
   // 지난 달 마지막 날짜를 구함
   const lastDateOfLastMonth: LastDate = new Date(
