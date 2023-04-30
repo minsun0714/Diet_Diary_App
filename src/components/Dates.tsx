@@ -67,6 +67,7 @@ function Dates({ year, month }: DatesProps): JSX.Element {
       if (daysOfThisMonth[i][j - 1]) {
         daysOfThisMonth[i][j] = daysOfThisMonth[i][j - 1] + 1;
       } else if (daysOfThisMonth[i - 1]?.[6]) {
+        if (daysOfThisMonth[i - 1].includes(lastDateOfMonth) && i > 1) break;
         daysOfThisMonth[i][j] = daysOfThisMonth[i - 1][6] + 1;
       }
 
