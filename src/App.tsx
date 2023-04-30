@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Days from "./components/Days";
 import Dates from "./components/Dates";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increaseYear,
+  decreaseYear,
+  increaseMonth,
+  decreaseMonth,
+} from "./store/store";
 
 const Table = styled.table`
   display: flex;
@@ -57,8 +64,13 @@ const Btn = styled.button`
   justify-content: center;
   align-items: center;
 `;
-
+interface Props {
+  year: number;
+  month: number;
+}
 function App() {
+  const dispatch = useDispatch();
+  const state = useSelector((state: Props) => state);
   const date = new Date();
   const [year, setYear] = useState(date.getFullYear());
   const [month, setMonth] = useState(date.getMonth());
@@ -71,16 +83,22 @@ function App() {
     console.log(year);
   };
   const handleClickPrevMonth = () => {
-    if (month === 0) {
-      setYear(year - 1);
-      setMonth(11);
-    } else setMonth(month - 1);
+    dispatch(decreaseMonth());
+    setMonth(state.month);
+    console.log(state);
+    // if (month === 0) {
+    //   setYear(year - 1);
+    //   setMonth(11);
+    // } else setMonth(month - 1);
   };
   const handleClickNextMonth = () => {
-    if (month === 11) {
-      setYear(year + 1);
-      setMonth(0);
-    } else setMonth(month + 1);
+    dispatch(increaseMonth());
+    setMonth(state.month);
+    console.log(state);
+    // if (month === 11) {
+    //   setYear(year + 1);
+    //   setMonth(0);
+    // } else setMonth(month + 1);
   };
 
   return (
