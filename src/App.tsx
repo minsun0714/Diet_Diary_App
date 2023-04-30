@@ -3,12 +3,7 @@ import styled from "styled-components";
 import Days from "./components/Days";
 import Dates from "./components/Dates";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  increaseYear,
-  decreaseYear,
-  increaseMonth,
-  decreaseMonth,
-} from "./store/store";
+import { increaseMonth, decreaseMonth } from "./store/store";
 
 const Table = styled.table`
   display: flex;
@@ -86,19 +81,11 @@ function App() {
     dispatch(decreaseMonth());
     setMonth(state.month);
     console.log(state);
-    // if (month === 0) {
-    //   setYear(year - 1);
-    //   setMonth(11);
-    // } else setMonth(month - 1);
   };
   const handleClickNextMonth = () => {
     dispatch(increaseMonth());
     setMonth(state.month);
     console.log(state);
-    // if (month === 11) {
-    //   setYear(year + 1);
-    //   setMonth(0);
-    // } else setMonth(month + 1);
   };
 
   return (
