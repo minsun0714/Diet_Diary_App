@@ -1,12 +1,19 @@
 import { legacy_createStore as createStore } from "redux";
 
-const INCREASE = "INCREASE";
+const INCREASEMONTH = "INCREASEMONTH";
+const DECREASEMONTH = "DECREASEMONTH";
 
 export const increaseMonth = () => {
   return {
-    type: INCREASE,
+    type: INCREASEMONTH,
   };
 };
+export const decreaseMonth = () => {
+  return {
+    type: DECREASEMONTH,
+  };
+};
+
 const date = new Date();
 interface Props {
   month: number;
@@ -20,8 +27,10 @@ export const reducer = (
   action: Action
 ) => {
   switch (action.type) {
-    case INCREASE:
-      return { month: state.month + 1 };
+    case INCREASEMONTH:
+      return state.month === 11 ? { month: 0 } : { month: state.month + 1 };
+    case DECREASEMONTH:
+      return state.month === 0 ? { month: 11 } : { month: state.month - 1 };
     default:
       return state;
   }
