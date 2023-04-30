@@ -23,12 +23,12 @@ const Table = styled.table`
   }
 `;
 
-const YearWrapper = styled.caption`
+const YearWrapper = styled.div`
   display: flex;
   position: absolute;
 `;
 
-const Year = styled.div`
+const Year = styled.caption`
   font-size: 50px;
   margin-top: 10px;
   margin-bottom: 700px;
@@ -36,13 +36,13 @@ const Year = styled.div`
   text-shadow: 2px 2px 4px white;
 `;
 
-const MonthWrapper = styled.caption`
+const MonthWrapper = styled.div`
   display: flex;
   position: absolute;
   margin-bottom: 500px;
 `;
 
-const Month = styled.div`
+const Month = styled.caption`
   font-size: 70px;
   color: white;
   text-shadow: 2px 2px 4px pink;
