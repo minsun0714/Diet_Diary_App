@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import Days from "./components/Days";
 import Dates from "./components/Dates";
@@ -8,7 +8,7 @@ import {
   decreaseYear,
   increaseMonth,
   decreaseMonth,
-} from "./store/store";
+} from "./store/actions";
 
 const Table = styled.table`
   display: flex;
