@@ -68,7 +68,6 @@ function App() {
   const state = useSelector((state: Props) => state);
   const date = new Date();
   const [year, setYear] = useState(date.getFullYear());
-  const [month, setMonth] = useState(date.getMonth());
   const handleClickPrevYear = () => {
     setYear(year - 1);
     console.log(year);
@@ -79,12 +78,10 @@ function App() {
   };
   const handleClickPrevMonth = () => {
     dispatch(decreaseMonth());
-    setMonth(state.month);
     console.log(state);
   };
   const handleClickNextMonth = () => {
     dispatch(increaseMonth());
-    setMonth(state.month);
     console.log(state);
   };
 
@@ -97,11 +94,11 @@ function App() {
       </YearWrapper>
       <MonthWrapper>
         <Btn onClick={handleClickPrevMonth}>◀️</Btn>
-        <Month>{month + 1}월</Month>
+        <Month>{state.month + 1}월</Month>
         <Btn onClick={handleClickNextMonth}>▶️</Btn>
       </MonthWrapper>
       <Days />
-      <Dates year={year} month={month} />
+      <Dates year={year} month={state.month} />
     </Table>
   );
 }
