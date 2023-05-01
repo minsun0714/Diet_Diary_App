@@ -3,7 +3,12 @@ import styled from "styled-components";
 import Days from "./components/Days";
 import Dates from "./components/Dates";
 import { useDispatch, useSelector } from "react-redux";
-import { increaseMonth, decreaseMonth } from "./store/store";
+import {
+  increaseYear,
+  decreaseYear,
+  increaseMonth,
+  decreaseMonth,
+} from "./store/store";
 
 const Table = styled.table`
   display: flex;
@@ -66,30 +71,24 @@ interface Props {
 function App() {
   const dispatch = useDispatch();
   const state = useSelector((state: Props) => state);
-  const date = new Date();
-  const [year, setYear] = useState(date.getFullYear());
   const handleClickPrevYear = () => {
-    setYear(year - 1);
-    console.log(year);
+    dispatch(decreaseYear());
   };
   const handleClickNextYear = () => {
-    setYear(year + 1);
-    console.log(year);
+    dispatch(increaseYear());
   };
   const handleClickPrevMonth = () => {
     dispatch(decreaseMonth());
-    console.log(state);
   };
   const handleClickNextMonth = () => {
     dispatch(increaseMonth());
-    console.log(state);
   };
 
   return (
     <Table>
       <YearWrapper>
         <Btn onClick={handleClickPrevYear}>◀️</Btn>
-        <Year>{year}</Year>
+        <Year>{state.year}</Year>
         <Btn onClick={handleClickNextYear}>▶️</Btn>
       </YearWrapper>
       <MonthWrapper>
@@ -98,7 +97,7 @@ function App() {
         <Btn onClick={handleClickNextMonth}>▶️</Btn>
       </MonthWrapper>
       <Days />
-      <Dates year={year} month={state.month} />
+      <Dates year={state.year} month={state.month} />
     </Table>
   );
 }
