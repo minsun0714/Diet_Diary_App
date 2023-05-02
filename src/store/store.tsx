@@ -1,7 +1,4 @@
-// import { legacy_createStore as createStore } from "redux";
 import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-// import { reducer } from "./reducers";
 
 const date = new Date();
 
