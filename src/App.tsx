@@ -8,7 +8,7 @@ import {
   decreaseYear,
   increaseMonth,
   decreaseMonth,
-} from "./store/actions";
+} from "./store/store";
 
 const Table = styled.table`
   display: flex;
