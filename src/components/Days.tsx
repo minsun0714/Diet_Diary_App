@@ -2,18 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 const Day = styled.th`
-  font-size: 40px;
-  width: 8.3vw;
+  font-size: 25px;
+  padding: 20px 0px 20px;
+  width: 8.43vw;
   color: white;
-  text-shadow: 2px 2px 0.5px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(200deg, rgba(130, 124, 124, 0.1), #f1bdca);
 `;
 
 const DaysContainer = styled.thead`
   position: absolute;
-  margin-bottom: 290px;
+  margin-bottom: 330px;
 `;
 function Days() {
-  const days = ["일", "월", "화", "수", "목", "금", "토"];
+  const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const showDays = days.map((day, idx) => <Day key={idx}>{day}</Day>);
   return (
     <DaysContainer>
