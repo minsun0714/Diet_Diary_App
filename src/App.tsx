@@ -34,6 +34,8 @@ const YearWrapper = styled.caption`
 `;
 
 const Year = styled.span`
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 50px;
   margin-top: 10px;
   margin-bottom: 700px;
@@ -48,6 +50,8 @@ const MonthWrapper = styled.caption`
 `;
 
 const Month = styled.span`
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 70px;
   color: white;
   text-shadow: 2px 2px 4px pink;
@@ -83,7 +87,20 @@ function App() {
   const handleClickNextMonth = () => {
     dispatch(increaseMonth());
   };
-
+  const monthArray = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   return (
     <Table>
       <YearWrapper>
@@ -93,7 +110,7 @@ function App() {
       </YearWrapper>
       <MonthWrapper>
         <Btn onClick={handleClickPrevMonth}>◀️</Btn>
-        <Month>{state.month + 1}월</Month>
+        <Month>{monthArray[state.month]}</Month>
         <Btn onClick={handleClickNextMonth}>▶️</Btn>
       </MonthWrapper>
       <Days />
