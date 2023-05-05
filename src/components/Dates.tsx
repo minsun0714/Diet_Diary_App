@@ -7,9 +7,11 @@ const DatesContainer = styled.tbody`
 
 type EachDatesProps = {
   today: {
+    year: number;
     month: number;
     date: number;
   };
+  row: number;
 };
 //
 const EachDate = styled.th<EachDatesProps>`
@@ -20,10 +22,16 @@ const EachDate = styled.th<EachDatesProps>`
   background-color: ${(props) => {
     const date = new Date();
     const thisMonth = date.getMonth();
-    return props.today.month === thisMonth &&
+    const thisYear = date.getFullYear();
+    return props.today.year === thisYear &&
+      props.today.month === thisMonth &&
       props.today.date === props.children
       ? "red"
       : "null";
+  }};
+  color: ${(props) => {
+    console.log(props.children);
+    return props.row === 0 && (props.children as number) > 7 ? "blue" : null;
   }};
   &:hover {
     color: pink;
@@ -85,12 +93,16 @@ function Dates({ year, month }: DatesProps) {
     }
   }
 
+  if (!daysOfThisMonth[daysOfThisMonth.length - 1].find((v) => v)) {
+    daysOfThisMonth.pop();
+  }
+
   const now = Date.now();
-  const today = { month, date: date.getDate() };
+  const today = { year, month, date: date.getDate() };
   const showDates = daysOfThisMonth.map((week, i) => (
     <tr key={now + i}>
       {week.map((date, j) => (
-        <EachDate key={now + j} today={today}>
+        <EachDate key={now + j} today={today} row={i}>
           {date ? date : null}
         </EachDate>
       ))}
