@@ -20,7 +20,7 @@ const Table = styled.table`
   height: 850px;
   width: 70vw;
   margin: auto;
-  background: rgba(0, 0, 0, 0.2);
+  background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
   box-shadow: 2px 2px 4px #999;
 
   @media (max-width: 500px) {
