@@ -6,7 +6,10 @@ const DatesContainer = styled.tbody`
 `;
 
 type EachDatesProps = {
-  today: number;
+  today: {
+    month: number;
+    date: number;
+  };
 };
 //
 const EachDate = styled.th<EachDatesProps>`
@@ -14,8 +17,13 @@ const EachDate = styled.th<EachDatesProps>`
   padding-top: 22px;
   width: 10vw;
   text-shadow: 1px 1px 2px gray;
-  color: ${(props) => {
-    return props.today === props.children ? "black" : "black";
+  background-color: ${(props) => {
+    const date = new Date();
+    const thisMonth = date.getMonth();
+    return props.today.month === thisMonth &&
+      props.today.date === props.children
+      ? "red"
+      : "null";
   }};
   &:hover {
     color: pink;
@@ -78,7 +86,7 @@ function Dates({ year, month }: DatesProps) {
   }
 
   const now = Date.now();
-  const today = date.getDate();
+  const today = { month, date: date.getDate() };
   const showDates = daysOfThisMonth.map((week, i) => (
     <tr key={now + i}>
       {week.map((date, j) => (
