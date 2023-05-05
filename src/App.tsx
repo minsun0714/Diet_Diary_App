@@ -38,7 +38,7 @@ const YearWrapper = styled.caption`
 
 const Year = styled.span`
   font-family: monospace;
-  font-size: 70px;
+  font-size: 50px;
   color: white;
   text-shadow: 2px 2px 4px pink;
   padding-bottom: 100px;
@@ -55,7 +55,7 @@ const MonthWrapper = styled.caption`
 
 const Month = styled.span`
   font-family: monospace;
-  font-size: 40px;
+  font-size: 45px;
   color: white;
   text-shadow: 2px 2px 4px pink;
   padding-bottom: 40px;
