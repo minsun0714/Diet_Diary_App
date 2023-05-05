@@ -23,7 +23,7 @@ const Table = styled.table`
   background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
   box-shadow: 2px 2px 4px #999;
 
-  @media (max-width: 500px) {
+  @media (max-width: 620px) {
     display: none;
   }
 `;
@@ -50,11 +50,15 @@ const MonthWrapper = styled.caption`
 `;
 
 const Month = styled.span`
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 70px;
   color: white;
   text-shadow: 2px 2px 4px pink;
+  padding-bottom: 40px;
+
+  @media (max-width: 1000px) {
+    font-size: 50px;
+  }
 `;
 
 const Btn = styled.button`
