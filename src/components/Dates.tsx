@@ -23,9 +23,9 @@ const EachDate = styled.th<EachDatesProps>`
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
-  width: 10vw;
+  width: 8.43vw;
   height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 2px 5.1vw 30px 0vw;
   text-shadow: 1px 1px 2px gray;
   background-image: ${(props) => {
