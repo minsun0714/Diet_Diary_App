@@ -108,7 +108,12 @@ function Dates({ year, month }: DatesProps) {
         <EachDate
           key={now + j}
           today={today}
-          row={{ week: i, lastWeek: daysOfThisMonth.length - 1 }}
+          row={{
+            week: i,
+            lastWeek: daysOfThisMonth.findIndex(
+              (week, index) => index !== 0 && week.includes(1)
+            ),
+          }}
           day={j}
         >
           {date ? date : null}
