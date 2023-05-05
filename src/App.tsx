@@ -30,43 +30,44 @@ const Table = styled.table`
 
 const YearWrapper = styled.caption`
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   position: absolute;
+  margin-bottom: 650px;
 `;
 
 const Year = styled.span`
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  font-size: 50px;
-  margin-top: 10px;
-  margin-bottom: 700px;
-  color: gray;
-  text-shadow: 2px 2px 4px white;
+  font-family: monospace;
+  font-size: 70px;
+  color: white;
+  text-shadow: 2px 2px 4px pink;
+  padding-bottom: 100px;
+  position: absolute;
 `;
 
 const MonthWrapper = styled.caption`
   display: flex;
+  flex-direction: row;
+  justify-content: center;
   position: absolute;
   margin-bottom: 500px;
 `;
 
 const Month = styled.span`
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 70px;
+  font-family: monospace;
+  font-size: 40px;
   color: white;
   text-shadow: 2px 2px 4px pink;
   padding-bottom: 40px;
-
-  @media (max-width: 1000px) {
-    font-size: 50px;
-  }
+  position: absolute;
 `;
 
 const Btn = styled.button`
-  background-color: rgba(0, 0, 0, 0.05);
-  height: 50px;
-  width: 50px;
-  margin: 15px 30px;
-  border: rgba(0, 0, 0, 0.1) 2px solid;
+  background: linear-gradient(200deg, rgba(125, 202, 220, 0.1), #e6cdcd);
+  height: 45px;
+  width: 45px;
+  margin: 10px 13vw;
+  border: rgba(0, 0, 0, 0) 2px solid;
   border-radius: 100px;
   display: flex;
   justify-content: center;

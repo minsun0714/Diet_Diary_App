@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Day = styled.th`
+  font-family: monospace;
   font-size: 25px;
   padding: 20px 0px 20px;
   width: 8.43vw;
