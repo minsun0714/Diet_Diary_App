@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const DatesContainer = styled.tbody`
-  margin-top: 200px;
+  margin-top: 300px;
   padding: 5vw;
 `;
 
@@ -18,36 +18,32 @@ type EachDatesProps = {
   };
   day: number;
 };
-//
+
 const EachDate = styled.th<EachDatesProps>`
-  font-size: 25px;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  font-size: 20px;
   width: 10vw;
   height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   padding: 2px 5.1vw 30px 0vw;
-  /* padding-top: 15px;
-  padding-bottom: 15px; */
   text-shadow: 1px 1px 2px gray;
-  background-color: ${(props) => {
+  background-image: ${(props) => {
     const date = new Date();
     const thisMonth = date.getMonth();
     const thisYear = date.getFullYear();
     return props.today.year === thisYear &&
       props.today.month === thisMonth &&
       props.today.date === props.children
-      ? "pink"
-      : "null";
+      ? "linear-gradient(150deg, rgba(249, 245, 245, 0.1), #f3bac3)"
+      : "linear-gradient(150deg, rgba(244, 239, 239, 0.1), #eae2e4)";
   }};
   color: ${(props) => {
     return (props.row.week === 0 && Number(props.children) > 7) ||
       (props.row.week === props.row.lastWeek && Number(props.children) < 8)
       ? "rgb(0, 0, 0, 0.1)"
-      : null;
+      : "rgb(0, 0, 0, 0.6)";
   }};
-  &:hover {
-    color: pink;
-    cursor: pointer;
-  }
 `;
 
 type LastDate = 28 | 29 | 30 | 31;
@@ -102,10 +98,6 @@ function Dates({ year, month }: DatesProps) {
         daysOfThisMonth[i][j] = 1;
       }
     }
-  }
-
-  if (!daysOfThisMonth[daysOfThisMonth.length - 1].find((v) => v)) {
-    daysOfThisMonth.pop();
   }
 
   const now = Date.now();
