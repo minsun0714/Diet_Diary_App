@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const DatesContainer = styled.tbody`
   margin-top: 200px;
+  padding: 5vw;
 `;
 
 type EachDatesProps = {
@@ -15,12 +16,17 @@ type EachDatesProps = {
     week: number;
     lastWeek: number;
   };
+  day: number;
 };
 //
 const EachDate = styled.th<EachDatesProps>`
-  font-size: 40px;
-  padding-top: 22px;
+  font-size: 25px;
   width: 10vw;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 2px 5.1vw 30px 0vw;
+  /* padding-top: 15px;
+  padding-bottom: 15px; */
   text-shadow: 1px 1px 2px gray;
   background-color: ${(props) => {
     const date = new Date();
@@ -29,11 +35,10 @@ const EachDate = styled.th<EachDatesProps>`
     return props.today.year === thisYear &&
       props.today.month === thisMonth &&
       props.today.date === props.children
-      ? "red"
+      ? "pink"
       : "null";
   }};
   color: ${(props) => {
-    console.log(props.children);
     return (props.row.week === 0 && Number(props.children) > 7) ||
       (props.row.week === props.row.lastWeek && Number(props.children) < 8)
       ? "rgb(0, 0, 0, 0.1)"
@@ -112,6 +117,7 @@ function Dates({ year, month }: DatesProps) {
           key={now + j}
           today={today}
           row={{ week: i, lastWeek: daysOfThisMonth.length - 1 }}
+          day={j}
         >
           {date ? date : null}
         </EachDate>
