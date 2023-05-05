@@ -11,7 +11,10 @@ type EachDatesProps = {
     month: number;
     date: number;
   };
-  row: number;
+  row: {
+    week: number;
+    lastWeek: number;
+  };
 };
 //
 const EachDate = styled.th<EachDatesProps>`
@@ -31,7 +34,10 @@ const EachDate = styled.th<EachDatesProps>`
   }};
   color: ${(props) => {
     console.log(props.children);
-    return props.row === 0 && (props.children as number) > 7 ? "blue" : null;
+    return (props.row.week === 0 && Number(props.children) > 7) ||
+      (props.row.week === props.row.lastWeek && Number(props.children) < 8)
+      ? "rgb(0, 0, 0, 0.1)"
+      : null;
   }};
   &:hover {
     color: pink;
@@ -102,7 +108,11 @@ function Dates({ year, month }: DatesProps) {
   const showDates = daysOfThisMonth.map((week, i) => (
     <tr key={now + i}>
       {week.map((date, j) => (
-        <EachDate key={now + j} today={today} row={i}>
+        <EachDate
+          key={now + j}
+          today={today}
+          row={{ week: i, lastWeek: daysOfThisMonth.length - 1 }}
+        >
           {date ? date : null}
         </EachDate>
       ))}
