@@ -8,9 +8,11 @@ type ToDo = {
   text: string;
 };
 
+const initialToDosState: ToDo[] = [];
+
 export const toDos = createSlice({
   name: "calendarReducer",
-  initialState: [] as ToDo[],
+  initialState: initialToDosState,
   reducers: {
     addToDo: (state: ToDo[], action: PayloadAction<ToDo>) => {
       return [action.payload, ...state];

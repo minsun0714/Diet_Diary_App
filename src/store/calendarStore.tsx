@@ -7,12 +7,14 @@ interface CalendarProps {
   month: number;
 }
 
+const initialCalendarState: CalendarProps = {
+  year: date.getFullYear(),
+  month: date.getMonth(),
+};
+
 export const calendar = createSlice({
   name: "calendarReducer",
-  initialState: {
-    year: date.getFullYear(),
-    month: date.getMonth(),
-  } as CalendarProps,
+  initialState: initialCalendarState,
   reducers: {
     increaseYear: (state: CalendarProps) => {
       return { year: state.year + 1, month: state.month };
