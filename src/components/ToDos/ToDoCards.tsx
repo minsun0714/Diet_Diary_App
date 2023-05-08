@@ -2,13 +2,49 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
-import { current } from "@reduxjs/toolkit";
+
+const CardsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Cards = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
 const Card = styled.li`
   border: 1px solid transparent;
   border-radius: 20px;
-  background-image: linear-gradient(200deg, rgba(130, 124, 124, 0.1), #f1bdca);
+  background-image: linear-gradient(
+    200deg,
+    rgba(234, 217, 226, 0.201),
+    #e9a1b3
+  );
   margin: 10px;
+  height: 100px;
+  width: 25vw;
+`;
+
+const Btn = styled.button`
+  width: 12vw;
+  background-image: linear-gradient(
+    200deg,
+    rgba(214, 203, 211, 0.909),
+    #bcceda
+  );
+  border: none;
+  border-radius: 3px;
+  margin: 3px;
+  margin-top: -90px;
+  height: 40px;
+  color: gray;
+  text-shadow: 1px 1px 1px white;
+  box-shadow: 1px 1px 5px pink;
 `;
 
 type ToDo = {
@@ -60,20 +96,22 @@ function ToDoCards({
   );
 
   return (
-    <div>
+    <CardsWrapper>
       <textarea onChange={onChange}></textarea>
       <button onClick={handleAddMemo}>+</button>
-      <ul>
+      <Cards>
         {currentList.map((memo: any, idx: number) => (
           <Card key={idx}>
             {memo.text}
-            {`${memo.year}년 ${memo.month}월 ${memo.date}일`}
-            <button onClick={() => handleUpdate(memo.id)}>수정</button>
-            <button onClick={() => handleDelete(memo.id)}>삭제</button>
+            <br />
+            <p>{`${memo.year}년 ${memo.month}월 ${memo.date}일`}</p>
+            <br />
+            <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
+            <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
           </Card>
         ))}
-      </ul>
-    </div>
+      </Cards>
+    </CardsWrapper>
   );
 }
 export default ToDoCards;
