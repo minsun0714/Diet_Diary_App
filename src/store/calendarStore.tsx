@@ -30,6 +30,6 @@ export const calendar = createSlice({
   },
 });
 
-export const store = configureStore({ reducer: calendar.reducer });
+export const calendarStore = configureStore({ reducer: calendar.reducer });
 export const { increaseYear, decreaseYear, increaseMonth, decreaseMonth } =
   calendar.actions;
