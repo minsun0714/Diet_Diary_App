@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-function ToDoCards({ memoList, setMemoList, memo, setMemo }: any) {
+function ToDoCards({
+  memoList,
+  setMemoList,
+  memo,
+  setMemo,
+  handleAddMemo,
+}: any) {
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(event.target.value);
   };
 
   const onClick = () => {
-    setMemoList([memo, ...memoList]);
+    setMemo(memo);
   };
   return (
     <div>
       <textarea onChange={onChange}></textarea>
-      <button onClick={onClick}>+</button>
+      <button onClick={handleAddMemo}>+</button>
       <ul>
         {memoList.map((memo: string, idx: number) => (
           <li key={idx}>{memo}</li>
