@@ -61,6 +61,7 @@ function App() {
         memo={memo}
         setMemo={setMemo}
         handleAddMemo={handleAddMemo}
+        currentDate={currentDate}
       />
     </Main>
   );

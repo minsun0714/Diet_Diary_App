@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { deleteToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
+import { current } from "@reduxjs/toolkit";
 
 const Card = styled.li`
   border: 1px solid transparent;
@@ -24,6 +25,7 @@ function ToDoCards({
   memo,
   setMemo,
   handleAddMemo,
+  currentDate,
 }: any) {
   const dispatch = useDispatch();
   const toDosList = useSelector((state: any) => state.toDos);
@@ -35,12 +37,19 @@ function ToDoCards({
     dispatch(deleteToDo({ id, ...toDosList }));
   };
 
+  const currentList = memoList.filter(
+    (memo: ToDo) =>
+      memo.year === currentDate.year &&
+      memo.month === currentDate.month &&
+      memo.date === currentDate.date
+  );
+
   return (
     <div>
       <textarea onChange={onChange}></textarea>
       <button onClick={handleAddMemo}>+</button>
       <ul>
-        {memoList.map((memo: any, idx: number) => (
+        {currentList.map((memo: any, idx: number) => (
           <Card key={idx}>
             {memo.text}
             {`${memo.year}년 ${memo.month}월 ${memo.date}일`}
