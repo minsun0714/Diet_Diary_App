@@ -1,6 +1,7 @@
 import { PayloadAction, configureStore, createSlice } from "@reduxjs/toolkit";
 
 type ToDo = {
+  id: number;
   year: number;
   month: number;
   date: number;
@@ -14,8 +15,11 @@ export const toDos = createSlice({
     addToDo: (state: ToDo[], action: PayloadAction<ToDo>) => {
       return [action.payload, ...state];
     },
+    deleteToDo: (state: ToDo[], action: PayloadAction<ToDo>) => {
+      return state.filter((toDo) => toDo.id !== action.payload.id);
+    },
   },
 });
 
 export const toDostore = configureStore({ reducer: toDos.reducer });
-export const { addToDo } = toDos.actions;
+export const { addToDo, deleteToDo } = toDos.actions;

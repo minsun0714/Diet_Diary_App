@@ -14,6 +14,7 @@ type MemoProp = {
   month: number;
   date: number;
   text: string;
+  id: number;
 };
 
 // interface Props {
@@ -49,7 +50,7 @@ function App() {
   console.log("지금 날짜", currentDate);
   const handleAddMemo = () => {
     console.log(memoList);
-    dispatch(addToDo({ ...currentDate, text: memo }));
+    dispatch(addToDo({ ...currentDate, id: Date.now(), text: memo }));
   };
 
   return (
