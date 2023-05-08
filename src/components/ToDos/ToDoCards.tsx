@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../..";
 
 const CardsWrapper = styled.div`
   display: flex;
@@ -63,13 +64,16 @@ function ToDoCards({
   currentDate,
 }: any) {
   const dispatch = useDispatch();
-  const toDosList = useSelector((state: any) => state.toDos);
+  const toDosList = useSelector((state: RootState) => state.toDos);
   const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(event.target.value);
   };
 
   const handleDelete = (id: number) => {
-    dispatch(deleteToDo({ id, ...toDosList }));
+    const toDoToDelete = toDosList.find((toDo: ToDo) => toDo.id === id);
+    if (toDoToDelete) {
+      dispatch(deleteToDo(toDoToDelete));
+    }
   };
 
   const handleUpdate = (id: number) => {
