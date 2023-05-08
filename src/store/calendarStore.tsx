@@ -9,7 +9,7 @@ interface Props {
 
 export const calendar = createSlice({
   name: "calendarReducer",
-  initialState: { year: date.getFullYear(), month: date.getMonth() },
+  initialState: { year: date.getFullYear(), month: date.getMonth() } as Props,
   reducers: {
     increaseYear: (state: Props) => {
       return { year: state.year + 1, month: state.month };

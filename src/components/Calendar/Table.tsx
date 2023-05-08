@@ -78,9 +78,13 @@ function Calendar({ currentDate, setCurrentDate }: any) {
   interface Props {
     year: number;
     month: number;
+    calendar: {
+      year: number;
+      month: number;
+    };
   }
   const dispatch = useDispatch();
-  const state = useSelector((state: Props) => state);
+  const state = useSelector((store: Props) => store.calendar);
   const handleClickPrevYear = () => {
     dispatch(decreaseYear());
   };

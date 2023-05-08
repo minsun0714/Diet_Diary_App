@@ -12,16 +12,16 @@ function ToDoCards({
     setMemo(event.target.value);
   };
 
-  const onClick = () => {
-    setMemo(memo);
-  };
   return (
     <div>
       <textarea onChange={onChange}></textarea>
       <button onClick={handleAddMemo}>+</button>
       <ul>
-        {memoList.map((memo: string, idx: number) => (
-          <li key={idx}>{memo}</li>
+        {memoList.map((memo: any, idx: number) => (
+          <li key={idx}>
+            {memo.text}
+            <button>삭제</button>
+          </li>
         ))}
       </ul>
     </div>
