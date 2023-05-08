@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Days from "../Days";
-import Dates from "../Dates";
+import Days from "./Days";
+import Dates from "./Dates";
 import { useDispatch, useSelector } from "react-redux";
 import {
   increaseYear,

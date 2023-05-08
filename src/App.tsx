@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import Calendar from "./components/Table/table";
+import Calendar from "./components/Calendar/Table";
 
 function App() {
   return (
