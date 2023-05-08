@@ -2,27 +2,30 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const date = new Date();
 
-interface Props {
+interface CalendarProps {
   year: number;
   month: number;
 }
 
 export const calendar = createSlice({
   name: "calendarReducer",
-  initialState: { year: date.getFullYear(), month: date.getMonth() } as Props,
+  initialState: {
+    year: date.getFullYear(),
+    month: date.getMonth(),
+  } as CalendarProps,
   reducers: {
-    increaseYear: (state: Props) => {
+    increaseYear: (state: CalendarProps) => {
       return { year: state.year + 1, month: state.month };
     },
-    decreaseYear: (state: Props) => {
+    decreaseYear: (state: CalendarProps) => {
       return { year: state.year - 1, month: state.month };
     },
-    increaseMonth: (state: Props) => {
+    increaseMonth: (state: CalendarProps) => {
       return state.month === 11
         ? { year: state.year + 1, month: 0 }
         : { year: state.year, month: state.month + 1 };
     },
-    decreaseMonth: (state: Props) => {
+    decreaseMonth: (state: CalendarProps) => {
       return state.month === 0
         ? { year: state.year - 1, month: 11 }
         : { year: state.year, month: state.month - 1 };
