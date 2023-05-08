@@ -50,10 +50,11 @@ type LastDate = 28 | 29 | 30 | 31;
 interface DatesProps {
   year: number;
   month: number;
+  setCurrentDate: any;
 }
 
 // year, month를 App.tsx에서 prop으로 받아옴
-function Dates({ year, month }: DatesProps) {
+function Dates({ year, month, setCurrentDate }: DatesProps) {
   const date = new Date();
   // 지난 달 마지막 날짜를 구함
   const lastDateOfLastMonth: LastDate = new Date(
@@ -101,7 +102,7 @@ function Dates({ year, month }: DatesProps) {
   }
   // 클릭한 날짜 확인
   const onClick = (date: number) => {
-    console.log(date);
+    setCurrentDate(date);
   };
 
   const now = Date.now();

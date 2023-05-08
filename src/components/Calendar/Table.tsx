@@ -74,7 +74,7 @@ const Btn = styled.button`
   align-items: center;
 `;
 
-function Calendar() {
+function Calendar({ currentDate, setCurrentDate }: any) {
   interface Props {
     year: number;
     month: number;
@@ -120,7 +120,11 @@ function Calendar() {
         <Btn onClick={handleClickNextMonth}>▶️</Btn>
       </MonthWrapper>
       <Days />
-      <Dates year={state.year} month={state.month} />
+      <Dates
+        year={state.year}
+        month={state.month}
+        setCurrentDate={setCurrentDate}
+      />
     </Table>
   );
 }
