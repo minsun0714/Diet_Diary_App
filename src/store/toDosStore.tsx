@@ -18,8 +18,15 @@ export const toDos = createSlice({
     deleteToDo: (state: ToDo[], action: PayloadAction<ToDo>) => {
       return state.filter((toDo) => toDo.id !== action.payload.id);
     },
+    updateToDo: (state: ToDo[], action: PayloadAction<ToDo>) => {
+      return state.map((toDo) =>
+        toDo.id === action.payload.id
+          ? { ...toDo, text: action.payload.text }
+          : toDo
+      );
+    },
   },
 });
 
 export const toDostore = configureStore({ reducer: toDos.reducer });
-export const { addToDo, deleteToDo } = toDos.actions;
+export const { addToDo, deleteToDo, updateToDo } = toDos.actions;

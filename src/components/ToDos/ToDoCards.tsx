@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { deleteToDo } from "../../store/toDosStore";
+import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
 import { current } from "@reduxjs/toolkit";
 
@@ -37,6 +37,21 @@ function ToDoCards({
     dispatch(deleteToDo({ id, ...toDosList }));
   };
 
+  const handleUpdate = (id: number) => {
+    const updatedToDo = toDosList.find((toDo: ToDo) => toDo.id === id);
+    if (updatedToDo) {
+      dispatch(
+        updateToDo({
+          id,
+          text: memo,
+          year: currentDate.year,
+          month: currentDate.month,
+          date: currentDate.date,
+        })
+      );
+    }
+  };
+
   const currentList = memoList.filter(
     (memo: ToDo) =>
       memo.year === currentDate.year &&
@@ -53,6 +68,7 @@ function ToDoCards({
           <Card key={idx}>
             {memo.text}
             {`${memo.year}년 ${memo.month}월 ${memo.date}일`}
+            <button onClick={() => handleUpdate(memo.id)}>수정</button>
             <button onClick={() => handleDelete(memo.id)}>삭제</button>
           </Card>
         ))}
