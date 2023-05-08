@@ -75,7 +75,7 @@ const Btn = styled.button`
 `;
 
 function Calendar({ setCurrentDate }: any) {
-  interface Props {
+  interface CalendarProps {
     year: number;
     month: number;
     calendar: {
@@ -84,7 +84,7 @@ function Calendar({ setCurrentDate }: any) {
     };
   }
   const dispatch = useDispatch();
-  const state = useSelector((store: Props) => store.calendar);
+  const state = useSelector((store: CalendarProps) => store.calendar);
   const handleClickPrevYear = () => {
     dispatch(decreaseYear());
   };
