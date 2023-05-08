@@ -101,8 +101,8 @@ function Dates({ year, month, setCurrentDate }: DatesProps) {
     }
   }
   // 클릭한 날짜 확인
-  const onClick = (date: number) => {
-    setCurrentDate(date);
+  const onClick = (dateInfo: { year: number; month: number; date: number }) => {
+    setCurrentDate(dateInfo);
   };
 
   const now = Date.now();
@@ -120,7 +120,7 @@ function Dates({ year, month, setCurrentDate }: DatesProps) {
             ),
           }}
           day={j}
-          onClick={() => onClick(date)}
+          onClick={() => onClick({ year, month, date })}
         >
           {date ? date : null}
         </EachDate>
