@@ -99,6 +99,10 @@ function Dates({ year, month }: DatesProps) {
       }
     }
   }
+  // 클릭한 날짜 확인
+  const onClick = (date: number) => {
+    console.log(date);
+  };
 
   const now = Date.now();
   const today = { year, month, date: date.getDate() };
@@ -115,13 +119,13 @@ function Dates({ year, month }: DatesProps) {
             ),
           }}
           day={j}
+          onClick={() => onClick(date)}
         >
           {date ? date : null}
         </EachDate>
       ))}
     </tr>
   ));
-
   return <DatesContainer>{showDates}</DatesContainer>;
 }
 export default Dates;
