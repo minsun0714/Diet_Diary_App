@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
@@ -57,7 +57,6 @@ type ToDo = {
 
 function ToDoCards({
   memoList,
-  setMemoList,
   memo,
   setMemo,
   handleAddMemo,

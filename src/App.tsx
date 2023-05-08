@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Calendar from "./components/Calendar/Table";
 import ToDoCards from "./components/ToDos/ToDoCards";
@@ -17,17 +17,6 @@ type MemoProp = {
   id: number;
 };
 
-// interface Props {
-//   year: number;
-//   month: number;
-//   calendar: {
-//     year: number;
-//     month: number;
-//   };
-// }
-// const dispatch = useDispatch();
-// const state = useSelector((store: Props) => store.calendar);
-
 function App() {
   const dispatch = useDispatch();
   const memoList = useSelector((state: { toDos: MemoProp[] }) => state.toDos);
@@ -39,17 +28,14 @@ function App() {
     today.getDate(),
   ];
 
-  // const [memoList, setMemoList] = useState<string[]>([]);
   const [memo, setMemo] = useState("");
   const [currentDate, setCurrentDate] = useState({
     year: todaysYear,
     month: todaysMonth,
     date: todaysDate,
   });
-  console.log("memo", memo);
-  console.log("지금 날짜", currentDate);
+
   const handleAddMemo = () => {
-    console.log(memoList);
     dispatch(addToDo({ ...currentDate, id: Date.now(), text: memo }));
   };
 

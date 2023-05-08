@@ -74,7 +74,7 @@ const Btn = styled.button`
   align-items: center;
 `;
 
-function Calendar({ currentDate, setCurrentDate }: any) {
+function Calendar({ setCurrentDate }: any) {
   interface Props {
     year: number;
     month: number;
