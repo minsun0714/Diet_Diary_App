@@ -1,5 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { addMemo } from "../../store/memoStore";
+
+type MemoProp = {
+  id: string;
+  text: string;
+};
 
 function ToDoCards() {
   const [memoList, setMemoList] = useState<string[]>([]);
