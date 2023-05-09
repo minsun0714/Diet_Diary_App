@@ -22,34 +22,41 @@ const Cards = styled.ul`
   align-items: center;
 `;
 
+const Input = styled.input`
+  height: 80px;
+  width: 20vw;
+`;
+
 const Card = styled.li`
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   border-radius: 20px;
   background-image: linear-gradient(
-    200deg,
+    100deg,
     rgba(234, 217, 226, 0.201),
     #e9a1b3
   );
   margin: 10px;
-  height: 100px;
+  margin-left: -30px;
+  height: 150px;
   width: 25vw;
+  font-size: 20px;
 `;
 
 const Btn = styled.button`
   width: 12vw;
-  background-image: linear-gradient(
-    200deg,
-    rgba(214, 203, 211, 0.909),
-    #bcceda
-  );
   border: none;
   border-radius: 3px;
   margin: 3px;
-  margin-top: -90px;
+  margin-top: 0px;
   height: 40px;
   color: gray;
   text-shadow: 1px 1px 1px white;
   box-shadow: 1px 1px 5px pink;
+`;
+
+const AddBtn = styled(Btn)`
+  width: 20vw;
+  box-shadow: 1px 1px 1px gray;
 `;
 
 type ToDo = {
@@ -69,7 +76,7 @@ function ToDoCards({
 }: any) {
   const dispatch = useDispatch();
   const toDosList = useSelector((state: RootState) => state.toDos);
-  const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMemo(event.target.value);
   };
 
@@ -104,15 +111,14 @@ function ToDoCards({
 
   return (
     <CardsWrapper>
-      <textarea onChange={onChange}></textarea>
-      <button onClick={handleAddMemo}>+</button>
+      {/* <h1>{`${currentDate.year}년 ${currentDate.month}월 ${currentDate.date}일`}</h1> */}
+      <Input onChange={onChange}></Input>
+      <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <Cards>
         {currentList.map((memo: any, idx: number) => (
           <Card key={idx}>
             {memo.text}
-            <br />
             <p>{`${memo.year}년 ${memo.month}월 ${memo.date}일`}</p>
-            <br />
             <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
             <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
           </Card>
