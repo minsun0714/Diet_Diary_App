@@ -19,7 +19,7 @@ const Table = styled.table`
   border-radius: 20px;
   height: 850px;
   width: 70vw;
-  margin: auto;
+  margin-left: 7vw;
   background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
   box-shadow: 2px 2px 4px #999;
 

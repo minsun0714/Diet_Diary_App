@@ -5,7 +5,7 @@ const Day = styled.th`
   font-family: monospace;
   font-size: 25px;
   padding: 20px 0px 20px;
-  width: 8.43vw;
+  width: 6.6vw;
   color: white;
   background-image: linear-gradient(200deg, rgba(130, 124, 124, 0.1), #f1bdca);
 `;
