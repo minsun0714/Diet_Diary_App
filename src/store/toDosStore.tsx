@@ -11,7 +11,7 @@ type ToDo = {
 const initialToDosState: ToDo[] = [];
 
 export const toDos = createSlice({
-  name: "calendarReducer",
+  name: "toDosReducer",
   initialState: initialToDosState,
   reducers: {
     addToDo: (state: ToDo[], action: PayloadAction<ToDo>) => {
