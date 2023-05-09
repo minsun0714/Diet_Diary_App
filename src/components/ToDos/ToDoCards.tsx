@@ -2,13 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../..";
+import { RootState } from "../../store/rootStore";
 
 const CardsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border: 1px solid green;
+  border-radius: 20px;
+  width: 40vw;
+  margin-right: 7vw;
 `;
 
 const Cards = styled.ul`
