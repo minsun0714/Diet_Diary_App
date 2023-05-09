@@ -6,19 +6,6 @@ const DatesContainer = styled.tbody`
   padding: 5vw;
 `;
 
-type EachDatesProps = {
-  today: {
-    year: number;
-    month: number;
-    date: number;
-  };
-  row: {
-    week: number;
-    lastWeek: number;
-  };
-  day: number;
-};
-
 const EachDate = styled.th<EachDatesProps>`
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -35,7 +22,7 @@ const EachDate = styled.th<EachDatesProps>`
     return props.today.year === thisYear &&
       props.today.month === thisMonth &&
       props.today.date === props.children
-      ? "linear-gradient(150deg, rgba(249, 245, 245, 0.1), #f3bac3)"
+      ? "linear-gradient(150deg, rgba(249, 245, 245, 0.1),#f3bac3)"
       : "linear-gradient(150deg, rgba(244, 239, 239, 0.1), #eae2e4)";
   }};
   color: ${(props) => {
@@ -44,7 +31,24 @@ const EachDate = styled.th<EachDatesProps>`
       ? "rgb(0, 0, 0, 0.1)"
       : "rgb(0, 0, 0, 0.6)";
   }};
+
+  &:hover {
+    background-image: linear-gradient(150deg, white, rgba(244, 239, 239, 0.1));
+  }
 `;
+
+type EachDatesProps = {
+  today: {
+    year: number;
+    month: number;
+    date: number;
+  };
+  row: {
+    week: number;
+    lastWeek: number;
+  };
+  day: number;
+};
 
 type LastDate = 28 | 29 | 30 | 31;
 interface DatesProps {
