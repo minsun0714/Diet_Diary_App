@@ -122,16 +122,18 @@ function ToDoCards({ currentDate }: ICurrentDate) {
 
   return (
     <CardsWrapper>
-      <h1>{`${currentDate.year}년 ${currentDate.month}월 ${currentDate.date}일`}</h1>
+      <h1>{`${currentDate.year}년 ${currentDate.month + 1}월 ${
+        currentDate.date
+      }일`}</h1>
       <Input value={memo} onChange={onChange}></Input>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <Cards>
         {currentList.map((memo: ToDo) => (
           <Card key={memo.id}>
             {memo.text}
-            <p>{`${memo.year}년 ${memo.month}월 ${memo.date}일`}</p>
-            {/* <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
-            <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn> */}
+            <p>{`${memo.year}년 ${memo.month + 1}월 ${memo.date}일`}</p>
+            <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
+            <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
           </Card>
         ))}
       </Cards>
