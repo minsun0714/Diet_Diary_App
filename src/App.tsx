@@ -10,11 +10,9 @@ const Main = styled.main`
 
 function App() {
   const today = new Date();
-  const [todaysYear, todaysMonth, todaysDate] = [
-    today.getFullYear(),
-    today.getMonth(),
-    today.getDate(),
-  ];
+  const todaysYear = today.getFullYear();
+  const todaysMonth = today.getMonth();
+  const todaysDate = today.getDate();
 
   const [currentDate, setCurrentDate] = useState({
     year: todaysYear,
