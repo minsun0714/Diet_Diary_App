@@ -36,6 +36,9 @@ function App() {
   });
 
   const handleAddMemo = () => {
+    if (!memo) {
+      return;
+    }
     dispatch(addToDo({ ...currentDate, id: Date.now(), text: memo }));
     setMemo("");
   };
