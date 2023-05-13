@@ -50,8 +50,6 @@ type EachDatesProps = {
   day: number;
 };
 
-type LastDate = 28 | 29 | 30 | 31;
-
 interface DatesProps {
   year: number;
   month: number;
@@ -62,24 +60,32 @@ interface DatesProps {
   }) => void;
 }
 
+type LastDate = 28 | 29 | 30 | 31;
+
+// 타입가드 함수
+function isLastDate(num: number): num is LastDate {
+  return [28, 29, 30, 31].includes(num);
+}
+
 // year, month를 App.tsx에서 prop으로 받아옴
 function Dates({ year, month, setCurrentDate }: DatesProps) {
   const date = new Date();
   // 지난 달 마지막 날짜를 구함
-  const lastDateOfLastMonth: LastDate = new Date(
-    year,
-    month,
-    0
-  ).getDate() as LastDate;
+  const lastDateOfLastMonth = new Date(year, month, 0).getDate();
+
+  if (!isLastDate(lastDateOfLastMonth)) {
+    throw new Error("마지막 날짜가 유효하지 않습니다.");
+  }
 
   // 이번 달 1일이 무슨 요일인지 구함
   const firstDayOfMonth = new Date(year, month, 1).getDay();
   // 이번 달이 며칠까지 있는지 구함
-  const lastDateOfMonth: LastDate = new Date(
-    year,
-    month + 1,
-    0
-  ).getDate() as LastDate;
+  const lastDateOfMonth = new Date(year, month + 1, 0).getDate();
+
+  // 타입가드함수 호출
+  if (!isLastDate(lastDateOfMonth)) {
+    throw new Error("마지막 날짜가 유효하지 않습니다.");
+  }
 
   // 날짜를 채워줄 2차원 빈 배열 선언
   let daysOfThisMonth = [...Array(6)].map((_) => [...Array(7)].map(() => 0));
