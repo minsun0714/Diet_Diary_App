@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/rootStore";
+import { addToDo } from "../../store/toDosStore";
 
 const CardsWrapper = styled.div`
   display: flex;
@@ -70,17 +71,19 @@ type ToDo = {
   text: string;
 };
 
-function ToDoCards({
-  memoList,
-  memo,
-  setMemo,
-  handleAddMemo,
-  currentDate,
-}: any) {
+function ToDoCards({ currentDate }: any) {
   const dispatch = useDispatch();
+  const [memo, setMemo] = useState("");
   const toDosList = useSelector((state: RootState) => state.toDos);
+
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMemo(event.target.value);
+  };
+
+  const handleAddMemo = () => {
+    if (!memo) return;
+    dispatch(addToDo({ ...currentDate, id: Date.now(), text: memo }));
+    setMemo("");
   };
 
   const handleDelete = (id: number) => {
@@ -105,7 +108,7 @@ function ToDoCards({
     }
   };
 
-  const currentList = memoList.filter(
+  const currentList = toDosList.filter(
     (memo: ToDo) =>
       memo.year === currentDate.year &&
       memo.month === currentDate.month &&
