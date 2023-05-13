@@ -112,7 +112,7 @@ function ToDoCards({
   return (
     <CardsWrapper>
       {/* <h1>{`${currentDate.year}년 ${currentDate.month}월 ${currentDate.date}일`}</h1> */}
-      <Input onChange={onChange}></Input>
+      <Input value={memo} onChange={onChange}></Input>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <Cards>
         {currentList.map((memo: any, idx: number) => (
