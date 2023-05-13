@@ -4,6 +4,7 @@ import { deleteToDo, updateToDo } from "../../store/toDosStore";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/rootStore";
 import { addToDo } from "../../store/toDosStore";
+import { CurrentDate } from "../../App";
 
 const CardsWrapper = styled.div`
   display: flex;
@@ -71,12 +72,8 @@ type ToDo = {
   text: string;
 };
 
-export interface ICurrentDate {
-  currentDate: {
-    year: number;
-    month: number;
-    date: number;
-  };
+interface ICurrentDate {
+  currentDate: CurrentDate;
 }
 
 function ToDoCards({ currentDate }: ICurrentDate) {
