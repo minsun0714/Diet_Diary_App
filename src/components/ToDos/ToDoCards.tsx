@@ -71,7 +71,15 @@ type ToDo = {
   text: string;
 };
 
-function ToDoCards({ currentDate }: any) {
+interface ICurrentDate {
+  currentDate: {
+    year: number;
+    month: number;
+    date: number;
+  };
+}
+
+function ToDoCards({ currentDate }: ICurrentDate) {
   const dispatch = useDispatch();
   const [memo, setMemo] = useState("");
   const toDosList = useSelector((state: RootState) => state.toDos);
