@@ -37,9 +37,12 @@ const Card = styled.li`
   );
   margin: 10px;
   margin-left: -30px;
-  height: 150px;
+  padding-top: 40px;
+  height: 100px;
   width: 25vw;
   font-size: 20px;
+  list-style: none;
+  text-align: center;
 `;
 
 const Btn = styled.button`
@@ -119,8 +122,8 @@ function ToDoCards({
           <Card key={idx}>
             {memo.text}
             <p>{`${memo.year}년 ${memo.month}월 ${memo.date}일`}</p>
-            <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
-            <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
+            {/* <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
+            <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn> */}
           </Card>
         ))}
       </Cards>
