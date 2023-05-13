@@ -51,10 +51,15 @@ type EachDatesProps = {
 };
 
 type LastDate = 28 | 29 | 30 | 31;
+
 interface DatesProps {
   year: number;
   month: number;
-  setCurrentDate: any;
+  setCurrentDate: (newDate: {
+    year: number;
+    month: number;
+    date: number;
+  }) => void;
 }
 
 // year, month를 App.tsx에서 prop으로 받아옴
