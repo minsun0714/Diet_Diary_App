@@ -9,6 +9,7 @@ import {
   increaseMonth,
   decreaseMonth,
 } from "../../store/calendarStore";
+import { RootState } from "../../store/rootStore";
 
 const Table = styled.table`
   display: flex;
@@ -75,28 +76,25 @@ const Btn = styled.button`
 `;
 
 function Calendar({ setCurrentDate }: any) {
-  interface CalendarProps {
-    year: number;
-    month: number;
-    calendar: {
-      year: number;
-      month: number;
-    };
-  }
   const dispatch = useDispatch();
-  const state = useSelector((store: CalendarProps) => store.calendar);
+  const state = useSelector((store: RootState) => store.calendar);
+
   const handleClickPrevYear = () => {
     dispatch(decreaseYear());
   };
+
   const handleClickNextYear = () => {
     dispatch(increaseYear());
   };
+
   const handleClickPrevMonth = () => {
     dispatch(decreaseMonth());
   };
+
   const handleClickNextMonth = () => {
     dispatch(increaseMonth());
   };
+
   const monthArray = [
     "January",
     "February",
