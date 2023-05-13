@@ -71,7 +71,7 @@ type ToDo = {
   text: string;
 };
 
-interface ICurrentDate {
+export interface ICurrentDate {
   currentDate: {
     year: number;
     month: number;
@@ -129,8 +129,8 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       <Input value={memo} onChange={onChange}></Input>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <Cards>
-        {currentList.map((memo: any, idx: number) => (
-          <Card key={idx}>
+        {currentList.map((memo: ToDo) => (
+          <Card key={memo.id}>
             {memo.text}
             <p>{`${memo.year}년 ${memo.month}월 ${memo.date}일`}</p>
             {/* <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
