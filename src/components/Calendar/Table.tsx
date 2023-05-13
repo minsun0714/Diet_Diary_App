@@ -75,7 +75,15 @@ const Btn = styled.button`
   align-items: center;
 `;
 
-function Calendar({ setCurrentDate }: any) {
+interface ICalendarProp {
+  setCurrentDate: (newDate: {
+    year: number;
+    month: number;
+    date: number;
+  }) => void;
+}
+
+function Calendar({ setCurrentDate }: ICalendarProp) {
   const dispatch = useDispatch();
   const state = useSelector((store: RootState) => store.calendar);
 
