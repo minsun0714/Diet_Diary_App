@@ -22,7 +22,7 @@ function App() {
 
   return (
     <Main>
-      <Calendar currentDate={currentDate} setCurrentDate={setCurrentDate} />
+      <Calendar setCurrentDate={setCurrentDate} />
       <ToDoCards currentDate={currentDate} />
     </Main>
   );
