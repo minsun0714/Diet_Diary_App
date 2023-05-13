@@ -78,6 +78,7 @@ interface ICurrentDate {
 
 function ToDoCards({ currentDate }: ICurrentDate) {
   const dispatch = useDispatch();
+  const [isUpdateBtnClicked, setIsUpdateBtnClicked] = useState(false);
   const [memo, setMemo] = useState("");
   const toDosList = useSelector((state: RootState) => state.toDos);
 
@@ -99,6 +100,10 @@ function ToDoCards({ currentDate }: ICurrentDate) {
   };
 
   const handleUpdate = (id: number) => {
+    if (!isUpdateBtnClicked) {
+      setIsUpdateBtnClicked(true);
+      return;
+    }
     const updatedToDo = toDosList.find((toDo: ToDo) => toDo.id === id);
     if (updatedToDo) {
       dispatch(
@@ -130,9 +135,15 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       <Cards>
         {currentList.map((memo: ToDo) => (
           <Card key={memo.id}>
-            {memo.text}
+            {isUpdateBtnClicked ? (
+              <input placeholder='수정할 내용을 입력해주세요'></input>
+            ) : (
+              memo.text
+            )}
             <p>{`${memo.year}년 ${memo.month + 1}월 ${memo.date}일`}</p>
-            <Btn onClick={() => handleUpdate(memo.id)}>수정</Btn>
+            <Btn onClick={() => handleUpdate(memo.id)}>
+              {isUpdateBtnClicked ? "완료" : "수정"}
+            </Btn>
             <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
           </Card>
         ))}
