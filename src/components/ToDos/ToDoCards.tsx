@@ -79,11 +79,18 @@ interface ICurrentDate {
 function ToDoCards({ currentDate }: ICurrentDate) {
   const dispatch = useDispatch();
   const [isUpdateBtnClicked, setIsUpdateBtnClicked] = useState(false);
+  const [updatedContent, setUpdatedContent] = useState("");
   const [memo, setMemo] = useState("");
   const toDosList = useSelector((state: RootState) => state.toDos);
 
   const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMemo(event.target.value);
+  };
+
+  const onChangeUpdatedContent = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setUpdatedContent(event.currentTarget.value);
   };
 
   const handleAddMemo = () => {
@@ -99,7 +106,7 @@ function ToDoCards({ currentDate }: ICurrentDate) {
     }
   };
 
-  const handleUpdate = (id: number) => {
+  const handleUpdate = (id: number, text: string) => {
     if (!isUpdateBtnClicked) {
       setIsUpdateBtnClicked(true);
       return;
@@ -109,13 +116,14 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       dispatch(
         updateToDo({
           id,
-          text: memo,
+          text: updatedContent,
           year: currentDate.year,
           month: currentDate.month,
           date: currentDate.date,
         })
       );
     }
+    setIsUpdateBtnClicked(false);
   };
 
   const currentList = toDosList.filter(
@@ -136,12 +144,16 @@ function ToDoCards({ currentDate }: ICurrentDate) {
         {currentList.map((memo: ToDo) => (
           <Card key={memo.id}>
             {isUpdateBtnClicked ? (
-              <input placeholder='수정할 내용을 입력해주세요'></input>
+              <input
+                placeholder='수정할 내용을 입력해주세요'
+                value={updatedContent}
+                onChange={onChangeUpdatedContent}
+              ></input>
             ) : (
               memo.text
             )}
             <p>{`${memo.year}년 ${memo.month + 1}월 ${memo.date}일`}</p>
-            <Btn onClick={() => handleUpdate(memo.id)}>
+            <Btn onClick={() => handleUpdate(memo.id, updatedContent)}>
               {isUpdateBtnClicked ? "완료" : "수정"}
             </Btn>
             <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
