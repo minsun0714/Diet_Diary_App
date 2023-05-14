@@ -116,11 +116,13 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       setIsUpdateBtnClicked(true);
       setTargetId(id);
       setUpdatedContent(text);
-      console.log(targetId);
       return;
     }
     const updatedToDo = toDosList.find((toDo: ToDo) => toDo.id === id);
-    if (id !== targetId) return;
+    if (id !== targetId) {
+      setIsUpdateBtnClicked(false);
+      return;
+    }
     if (updatedToDo) {
       dispatch(
         updateToDo({
