@@ -119,6 +119,7 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       return;
     }
     const updatedToDo = toDosList.find((toDo: ToDo) => toDo.id === id);
+    if (id !== targetId) return;
     if (updatedToDo) {
       dispatch(
         updateToDo({
