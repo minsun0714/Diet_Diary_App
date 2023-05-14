@@ -115,6 +115,7 @@ function ToDoCards({ currentDate }: ICurrentDate) {
     if (!isUpdateBtnClicked) {
       setIsUpdateBtnClicked(true);
       setTargetId(id);
+      setUpdatedContent(text);
       console.log(targetId);
       return;
     }
@@ -154,13 +155,14 @@ function ToDoCards({ currentDate }: ICurrentDate) {
             {isUpdateBtnClicked && toDo.id === targetId ? (
               <input
                 placeholder='수정할 내용을 입력해주세요'
+                value={updatedContent}
                 onChange={onChangeUpdatedContent}
               ></input>
             ) : (
               toDo.text
             )}
             <p>{`${toDo.year}년 ${toDo.month + 1}월 ${toDo.date}일`}</p>
-            <Btn onClick={() => handleUpdate(toDo.id, updatedContent)}>
+            <Btn onClick={() => handleUpdate(toDo.id, toDo.text)}>
               {isUpdateBtnClicked && toDo.id === targetId ? "완료" : "수정"}
             </Btn>
             <Btn onClick={() => handleDelete(toDo.id)}>
