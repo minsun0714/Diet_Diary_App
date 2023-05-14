@@ -11,7 +11,7 @@ const CardsWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid green;
+  background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
   border-radius: 20px;
   width: 40vw;
   margin-right: 7vw;
