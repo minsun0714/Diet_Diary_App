@@ -149,23 +149,23 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       <Input value={memo} onChange={onChange}></Input>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <Cards>
-        {currentList.map((memo: ToDo) => (
-          <Card key={memo.id}>
-            {isUpdateBtnClicked && memo.id === targetId ? (
+        {currentList.map((toDo: ToDo) => (
+          <Card key={toDo.id}>
+            {isUpdateBtnClicked && toDo.id === targetId ? (
               <input
                 placeholder='수정할 내용을 입력해주세요'
                 onChange={onChangeUpdatedContent}
               ></input>
             ) : (
-              memo.text
+              toDo.text
             )}
-            <p>{`${memo.year}년 ${memo.month + 1}월 ${memo.date}일`}</p>
-            <Btn onClick={() => handleUpdate(memo.id, updatedContent)}>
-              {isUpdateBtnClicked && memo.id === targetId ? "완료" : "수정"}
+            <p>{`${toDo.year}년 ${toDo.month + 1}월 ${toDo.date}일`}</p>
+            <Btn onClick={() => handleUpdate(toDo.id, updatedContent)}>
+              {isUpdateBtnClicked && toDo.id === targetId ? "완료" : "수정"}
             </Btn>
-            <Btn onClick={() => handleDelete(memo.id)}>
+            <Btn onClick={() => handleDelete(toDo.id)}>
               {" "}
-              {isUpdateBtnClicked && memo.id === targetId ? "취소" : "삭제"}
+              {isUpdateBtnClicked && toDo.id === targetId ? "취소" : "삭제"}
             </Btn>
           </Card>
         ))}
