@@ -6,6 +6,14 @@ import { RootState } from "../../store/rootStore";
 import { addToDo } from "../../store/toDosStore";
 import { CurrentDate } from "../../App";
 
+const TodaysDate = styled.h1`
+  color: gray;
+  font-size: 40px;
+  position: fixed;
+  top: 0;
+  margin-top: 60px;
+`;
+
 const CardsWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -15,6 +23,7 @@ const CardsWrapper = styled.div`
   border-radius: 20px;
   width: 40vw;
   margin-right: 7vw;
+  padding-top: 160px; /* 이 부분 추가 */
 `;
 
 const Cards = styled.ul`
@@ -24,9 +33,21 @@ const Cards = styled.ul`
   align-items: center;
 `;
 
-const Input = styled.input`
+const TextArea = styled.textarea`
+  position: fixed;
+  top: 0;
+  margin-top: 130px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(250, 246, 244, 0.627),
+    #cce6f0
+  );
+  border-radius: 10px;
+  border: 1px inset white;
+  resize: none;
   height: 80px;
   width: 20vw;
+  outline: none;
 `;
 
 const Card = styled.li`
@@ -37,12 +58,13 @@ const Card = styled.li`
     rgba(234, 217, 226, 0.201),
     #e9a1b3
   );
-  margin: 10px;
+  margin: 20px;
   margin-left: -30px;
   padding-top: 40px;
   height: 100px;
   width: 25vw;
   font-size: 20px;
+  color: rgba(0, 0, 0, 0.5);
   list-style: none;
   text-align: center;
 `;
@@ -50,18 +72,23 @@ const Card = styled.li`
 const Btn = styled.button`
   width: 12vw;
   border: none;
-  border-radius: 3px;
+  border-radius: 15px;
   margin: 3px;
   margin-top: 0px;
   height: 40px;
   color: gray;
   text-shadow: 1px 1px 1px white;
-  box-shadow: 1px 1px 5px pink;
+  box-shadow: 1px 1px 5px gray;
 `;
 
-const AddBtn = styled(Btn)`
-  width: 20vw;
-  box-shadow: 1px 1px 1px gray;
+const AddBtn = styled.button`
+  width: 20.2vw;
+  background-image: white;
+  border: none;
+  height: 50px;
+  margin-top: 27px;
+  box-shadow: 1px 1px 5px gray;
+  border-radius: 10px;
 `;
 
 type ToDo = {
@@ -84,7 +111,7 @@ function ToDoCards({ currentDate }: ICurrentDate) {
   const [memo, setMemo] = useState("");
   const toDosList = useSelector((state: RootState) => state.toDos);
 
-  const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setMemo(event.target.value);
   };
 
@@ -146,10 +173,10 @@ function ToDoCards({ currentDate }: ICurrentDate) {
 
   return (
     <CardsWrapper>
-      <h1>{`${currentDate.year}년 ${currentDate.month + 1}월 ${
+      <TodaysDate>{`${currentDate.year}년 ${currentDate.month + 1}월 ${
         currentDate.date
-      }일`}</h1>
-      <Input value={memo} onChange={onChange}></Input>
+      }일`}</TodaysDate>
+      <TextArea value={memo} onChange={onChange}></TextArea>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <Cards>
         {currentList.map((toDo: ToDo) => (
