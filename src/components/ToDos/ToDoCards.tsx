@@ -100,6 +100,10 @@ function ToDoCards({ currentDate }: ICurrentDate) {
   };
 
   const handleDelete = (id: number) => {
+    if (isUpdateBtnClicked) {
+      setIsUpdateBtnClicked(false);
+      return;
+    }
     const toDoToDelete = toDosList.find((toDo: ToDo) => toDo.id === id);
     if (toDoToDelete) {
       dispatch(deleteToDo(toDoToDelete));
@@ -156,7 +160,10 @@ function ToDoCards({ currentDate }: ICurrentDate) {
             <Btn onClick={() => handleUpdate(memo.id, updatedContent)}>
               {isUpdateBtnClicked ? "완료" : "수정"}
             </Btn>
-            <Btn onClick={() => handleDelete(memo.id)}>삭제</Btn>
+            <Btn onClick={() => handleDelete(memo.id)}>
+              {" "}
+              {isUpdateBtnClicked ? "취소" : "삭제"}
+            </Btn>
           </Card>
         ))}
       </Cards>
