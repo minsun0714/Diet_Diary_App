@@ -47,7 +47,7 @@ const Card = styled.li`
   text-align: center;
 `;
 
-const Btn = styled.button`
+export const Btn = styled.button`
   width: 12vw;
   border: none;
   border-radius: 3px;
@@ -64,7 +64,7 @@ const AddBtn = styled(Btn)`
   box-shadow: 1px 1px 1px gray;
 `;
 
-type ToDo = {
+export type ToDo = {
   id: number;
   year: number;
   month: number;
@@ -72,7 +72,7 @@ type ToDo = {
   text: string;
 };
 
-interface ICurrentDate {
+export interface ICurrentDate {
   currentDate: CurrentDate;
 }
 
