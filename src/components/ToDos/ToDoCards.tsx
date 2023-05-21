@@ -8,51 +8,44 @@ import { CurrentDate } from "../../App";
 
 const TodaysDate = styled.h1`
   color: gray;
-  font-size: 40px;
-  position: absolute;
-  top: 0;
-  margin-top: 60px;
+  font-size: 20px;
+  margin-top: 40px;
 `;
 
 const CardsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
   border-radius: 20px;
   width: 40vw;
   margin-right: 7vw;
-  padding-top: 160px;
-  height: 695px;
+  max-height: 855px;
 `;
 
-const Cards = styled.ul`
+const CardContainer = styled.ul`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: auto;
-  margin-top: 180px;
-  margin-bottom: 70px;
-  padding-top: 540px;
+  margin-top: 40px;
+  margin-bottom: 0px;
+
+  padding-bottom: 180px;
+  height: auto;
 `;
 
-const TextArea = styled.textarea`
-  position: absolute;
-  top: 0;
-  margin-top: 130px;
+const NewMemo = styled.textarea`
+  margin-top: 20px;
   background-color: white;
   border-radius: 10px;
   border: 1px inset white;
-  resize: none;
-  height: 80px;
+  padding: 15px;
   width: 20vw;
   outline: none;
+  min-height: 100px;
 `;
 
 const Card = styled.li`
-  position: relative;
   border: 0px solid transparent;
   border-radius: 20px;
   background-image: linear-gradient(
@@ -63,7 +56,7 @@ const Card = styled.li`
   margin: 10px;
   margin-left: -30px;
   padding-top: 40px;
-  height: 130px;
+  height: 110px;
   width: 21vw;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.5);
@@ -77,19 +70,19 @@ const Btn = styled.button`
   border: none;
   border-radius: 15px;
   margin: 5px;
-  height: 40px;
+  height: 28px;
   color: gray;
   text-shadow: 1px 1px 1px white;
   box-shadow: 1px 1px 5px gray;
 `;
 
 const AddBtn = styled.button`
-  position: absolute;
   width: 20.2vw;
   background-image: white;
   border: none;
   height: 50px;
-  margin-bottom: 540px;
+  padding: 15px 0 15px;
+  margin-top: 10px;
   box-shadow: 1px 1px 5px gray;
   border-radius: 10px;
 `;
@@ -183,9 +176,9 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       <TodaysDate>{`${currentDate.year}년 ${currentDate.month + 1}월 ${
         currentDate.date
       }일`}</TodaysDate>
-      <TextArea value={memo} onChange={onChange}></TextArea>
+      <NewMemo value={memo} onChange={onChange}></NewMemo>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
-      <Cards>
+      <CardContainer>
         {currentList.map((toDo: ToDo) => (
           <Card key={toDo.id}>
             {isUpdateBtnClicked && toDo.id === targetId ? (
@@ -209,7 +202,7 @@ function ToDoCards({ currentDate }: ICurrentDate) {
             </Btn>
           </Card>
         ))}
-      </Cards>
+      </CardContainer>
     </CardsWrapper>
   );
 }
