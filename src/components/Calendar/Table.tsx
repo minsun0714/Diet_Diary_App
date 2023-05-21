@@ -23,6 +23,10 @@ const Table = styled.table`
   margin-left: 7vw;
   background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
   box-shadow: 2px 2px 4px #999;
+  @media (max-width: 1500px) {
+    width: 56vw;
+    height: 830px;
+  }
 
   @media (max-width: 620px) {
     display: none;
@@ -35,6 +39,9 @@ const YearWrapper = styled.caption`
   justify-content: center;
   position: absolute;
   margin-bottom: 650px;
+  @media (max-width: 1500px) {
+    margin-top: -80px;
+  }
 `;
 
 const Year = styled.span`
@@ -52,6 +59,9 @@ const MonthWrapper = styled.caption`
   justify-content: center;
   position: absolute;
   margin-bottom: 500px;
+  @media (max-width: 1500px) {
+    margin-top: -80px;
+  }
 `;
 
 const Month = styled.span`

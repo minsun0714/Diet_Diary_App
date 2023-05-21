@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const DatesContainer = styled.tbody`
-  margin-top: 300px;
+  margin-top: 280px;
   padding: 5vw;
+  @media (max-width: 1500px) {
+    margin-top: 200px;
+  }
 `;
 
 const EachDate = styled.th<EachDatesProps>`
@@ -34,6 +37,11 @@ const EachDate = styled.th<EachDatesProps>`
 
   &:hover {
     background-image: linear-gradient(150deg, white, rgba(244, 239, 239, 0.1));
+  }
+
+  @media (max-width: 1500px) {
+    height: 35px;
+    padding-bottom: 40px;
   }
 `;
 

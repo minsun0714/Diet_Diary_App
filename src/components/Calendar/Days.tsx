@@ -13,6 +13,10 @@ const Day = styled.th`
 const DaysContainer = styled.thead`
   position: absolute;
   margin-bottom: 330px;
+  width: auto;
+  @media (max-width: 1500px) {
+    margin-top: -80px;
+  }
 `;
 function Days() {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];

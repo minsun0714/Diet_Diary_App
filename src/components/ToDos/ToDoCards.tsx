@@ -9,7 +9,7 @@ import { CurrentDate } from "../../App";
 const TodaysDate = styled.h1`
   color: gray;
   font-size: 40px;
-  position: fixed;
+  position: absolute;
   top: 0;
   margin-top: 60px;
 `;
@@ -23,7 +23,8 @@ const CardsWrapper = styled.div`
   border-radius: 20px;
   width: 40vw;
   margin-right: 7vw;
-  padding-top: 160px; /* 이 부분 추가 */
+  padding-top: 160px;
+  height: 695px;
 `;
 
 const Cards = styled.ul`
@@ -31,17 +32,17 @@ const Cards = styled.ul`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: auto;
+  margin-top: 180px;
+  margin-bottom: 70px;
+  padding-top: 540px;
 `;
 
 const TextArea = styled.textarea`
-  position: fixed;
+  position: absolute;
   top: 0;
   margin-top: 130px;
-  background-image: linear-gradient(
-    180deg,
-    rgba(250, 246, 244, 0.627),
-    #cce6f0
-  );
+  background-color: white;
   border-radius: 10px;
   border: 1px inset white;
   resize: none;
@@ -51,6 +52,7 @@ const TextArea = styled.textarea`
 `;
 
 const Card = styled.li`
+  position: relative;
   border: 0px solid transparent;
   border-radius: 20px;
   background-image: linear-gradient(
@@ -58,23 +60,23 @@ const Card = styled.li`
     rgba(234, 217, 226, 0.201),
     #e9a1b3
   );
-  margin: 20px;
+  margin: 10px;
   margin-left: -30px;
   padding-top: 40px;
-  height: 100px;
-  width: 25vw;
+  height: 130px;
+  width: 21vw;
   font-size: 20px;
   color: rgba(0, 0, 0, 0.5);
   list-style: none;
   text-align: center;
+  z-index: 999;
 `;
 
 const Btn = styled.button`
-  width: 12vw;
+  width: 8vw;
   border: none;
   border-radius: 15px;
-  margin: 3px;
-  margin-top: 0px;
+  margin: 5px;
   height: 40px;
   color: gray;
   text-shadow: 1px 1px 1px white;
@@ -82,13 +84,18 @@ const Btn = styled.button`
 `;
 
 const AddBtn = styled.button`
+  position: absolute;
   width: 20.2vw;
   background-image: white;
   border: none;
   height: 50px;
-  margin-top: 27px;
+  margin-bottom: 540px;
   box-shadow: 1px 1px 5px gray;
   border-radius: 10px;
+`;
+
+const TodaysDateCard = styled.p`
+  font-size: 15px;
 `;
 
 type ToDo = {
@@ -190,7 +197,9 @@ function ToDoCards({ currentDate }: ICurrentDate) {
             ) : (
               toDo.text
             )}
-            <p>{`${toDo.year}년 ${toDo.month + 1}월 ${toDo.date}일`}</p>
+            <TodaysDateCard>{`${toDo.year}년 ${toDo.month + 1}월 ${
+              toDo.date
+            }일`}</TodaysDateCard>
             <Btn onClick={() => handleUpdate(toDo.id, toDo.text)}>
               {isUpdateBtnClicked && toDo.id === targetId ? "완료" : "수정"}
             </Btn>
