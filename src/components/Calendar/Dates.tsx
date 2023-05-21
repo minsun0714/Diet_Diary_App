@@ -10,13 +10,12 @@ const DatesContainer = styled.tbody`
 `;
 
 const EachDate = styled.th<EachDatesProps>`
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   font-size: 20px;
+  font-weight: 400;
   width: 8.43vw;
   height: 50px;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 2px 5.1vw 30px 0vw;
+  padding: 2px 4.8vw 30px 0.5vw;
   text-shadow: 1px 1px 2px gray;
   background-image: ${(props) => {
     const date = new Date();

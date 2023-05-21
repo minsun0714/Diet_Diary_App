@@ -40,7 +40,7 @@ const NewMemo = styled.textarea`
   border-radius: 10px;
   border: 1px inset white;
   padding: 15px;
-  width: 20vw;
+  width: 18.5vw;
   outline: none;
   min-height: 100px;
   resize: none;
@@ -97,6 +97,7 @@ const UpdateInput = styled.input`
   outline: none;
   color: gray;
   font-size: 18px;
+  width: 300px;
 `;
 
 const TodaysDateOnCard = styled.p`
