@@ -1,5 +1,4 @@
 import React from "react";
-import styled from "styled-components";
 import Days from "./Days";
 import Dates from "./Dates";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,88 +9,15 @@ import {
   decreaseMonth,
 } from "../../store/calendarStore";
 import { RootState } from "../../store/rootStore";
-
-const Table = styled.table`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid transparent;
-  border-radius: 20px;
-  height: 850px;
-  width: 70vw;
-  margin-left: 7vw;
-  background: linear-gradient(120deg, rgba(125, 202, 220, 0.1), #e6cdcd);
-  box-shadow: 2px 2px 4px #999;
-  @media (max-width: 1500px) {
-    width: 56vw;
-    height: 830px;
-  }
-
-  @media (max-width: 620px) {
-    display: none;
-  }
-`;
-
-const YearWrapper = styled.caption`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: absolute;
-  margin-bottom: 650px;
-  @media (max-width: 1500px) {
-    margin-top: -80px;
-  }
-`;
-
-const Year = styled.span`
-  font-family: monospace;
-  font-size: 50px;
-  color: white;
-  text-shadow: 2px 2px 4px pink;
-  padding-bottom: 100px;
-  position: absolute;
-`;
-
-const MonthWrapper = styled.caption`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  position: absolute;
-  margin-bottom: 500px;
-  @media (max-width: 1500px) {
-    margin-top: -80px;
-  }
-`;
-
-const Month = styled.span`
-  font-family: monospace;
-  font-size: 45px;
-  color: white;
-  text-shadow: 2px 2px 4px pink;
-  padding-bottom: 40px;
-  position: absolute;
-`;
-
-const Btn = styled.button`
-  background: linear-gradient(200deg, rgba(125, 202, 220, 0.1), #e6cdcd);
-  height: 45px;
-  width: 45px;
-  margin: 10px 13vw;
-  border: rgba(0, 0, 0, 0) 2px solid;
-  border-radius: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-interface ICalendarProp {
-  setCurrentDate: (newDate: {
-    year: number;
-    month: number;
-    date: number;
-  }) => void;
-}
+import {
+  Table,
+  YearWrapper,
+  MonthWrapper,
+  Year,
+  Month,
+  Btn,
+  ICalendarProp,
+} from "./CalendarStyle";
 
 function Calendar({ setCurrentDate }: ICalendarProp) {
   const dispatch = useDispatch();

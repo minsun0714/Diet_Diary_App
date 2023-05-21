@@ -1,74 +1,10 @@
 import React from "react";
-import styled from "styled-components";
-
-const DatesContainer = styled.tbody`
-  margin-top: 280px;
-  padding: 5vw;
-  @media (max-width: 1500px) {
-    margin-top: 200px;
-  }
-`;
-
-const EachDate = styled.th<EachDatesProps>`
-  font-size: 20px;
-  font-weight: 400;
-  width: 8.43vw;
-  height: 50px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 2px 4.8vw 30px 0.5vw;
-  text-shadow: 1px 1px 2px gray;
-  background-image: ${(props) => {
-    const date = new Date();
-    const thisMonth = date.getMonth();
-    const thisYear = date.getFullYear();
-    return props.today.year === thisYear &&
-      props.today.month === thisMonth &&
-      props.today.date === props.children
-      ? "linear-gradient(150deg, rgba(249, 245, 245, 0.1),#f3bac3)"
-      : "linear-gradient(150deg, rgba(244, 239, 239, 0.1), #eae2e4)";
-  }};
-  color: ${(props) => {
-    return (props.row.week === 0 && Number(props.children) > 7) ||
-      (props.row.week === props.row.lastWeek && Number(props.children) < 8)
-      ? "rgb(0, 0, 0, 0.1)"
-      : "rgb(0, 0, 0, 0.6)";
-  }};
-
-  &:hover {
-    background-image: linear-gradient(150deg, white, rgba(244, 239, 239, 0.1));
-  }
-
-  @media (max-width: 1500px) {
-    height: 35px;
-    padding-bottom: 40px;
-  }
-`;
-
-type EachDatesProps = {
-  today: {
-    year: number;
-    month: number;
-    date: number;
-  };
-  row: {
-    week: number;
-    lastWeek: number;
-  };
-  day: number;
-};
-
-interface DatesProps {
-  year: number;
-  month: number;
-  setCurrentDate: (newDate: {
-    year: number;
-    month: number;
-    date: number;
-  }) => void;
-}
-
-type LastDate = 28 | 29 | 30 | 31;
-
+import {
+  DatesContainer,
+  EachDate,
+  LastDate,
+  DatesProps,
+} from "./CalendarStyle";
 // 타입가드 함수
 function isLastDate(num: number): num is LastDate {
   return [28, 29, 30, 31].includes(num);

@@ -1,23 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { Day, DaysContainer } from "./CalendarStyle";
 
-const Day = styled.th`
-  font-family: monospace;
-  font-size: 25px;
-  padding: 20px 0px 20px;
-  width: 6.6vw;
-  color: white;
-  background-image: linear-gradient(200deg, rgba(130, 124, 124, 0.1), #f1bdca);
-`;
-
-const DaysContainer = styled.thead`
-  position: absolute;
-  margin-bottom: 330px;
-  width: auto;
-  @media (max-width: 1500px) {
-    margin-top: -80px;
-  }
-`;
 function Days() {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const showDays = days.map((day, idx) => <Day key={idx}>{day}</Day>);

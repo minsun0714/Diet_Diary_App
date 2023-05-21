@@ -2,17 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Calendar from "./components/Calendar/Table";
 import ToDoCards from "./components/ToDos/ToDoCards";
-
-const Main = styled.main`
-  display: flex;
-  flex-direction: row;
-`;
-
-export type CurrentDate = {
-  year: number;
-  month: number;
-  date: number;
-};
+import { Main, CurrentDate } from "./MainStyle";
 
 function App() {
   const today = new Date();
