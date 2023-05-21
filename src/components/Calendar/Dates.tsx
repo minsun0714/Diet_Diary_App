@@ -4,7 +4,7 @@ import {
   EachDate,
   LastDate,
   DatesProps,
-} from "./CalendarStyle";
+} from "./CalendarStyleAndType";
 // 타입가드 함수
 function isLastDate(num: number): num is LastDate {
   return [28, 29, 30, 31].includes(num);

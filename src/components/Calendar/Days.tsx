@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Day, DaysContainer } from "./CalendarStyle";
+import { Day, DaysContainer } from "./CalendarStyleAndType";
 
 function Days() {
   const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];

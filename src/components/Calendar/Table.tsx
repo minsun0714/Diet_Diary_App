@@ -17,7 +17,7 @@ import {
   Month,
   Btn,
   ICalendarProp,
-} from "./CalendarStyle";
+} from "./CalendarStyleAndType";
 
 function Calendar({ setCurrentDate }: ICalendarProp) {
   const dispatch = useDispatch();
