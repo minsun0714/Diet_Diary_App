@@ -63,6 +63,8 @@ const Card = styled.li`
   list-style: none;
   text-align: center;
   z-index: 999;
+  box-shadow: 1px 1px 5px gray;
+  word-wrap: break-word;
 `;
 
 const Btn = styled.button`
@@ -176,7 +178,7 @@ function ToDoCards({ currentDate }: ICurrentDate) {
       <TodaysDate>{`${currentDate.year}년 ${currentDate.month + 1}월 ${
         currentDate.date
       }일`}</TodaysDate>
-      <NewMemo value={memo} onChange={onChange}></NewMemo>
+      <NewMemo maxLength={25} value={memo} onChange={onChange}></NewMemo>
       <AddBtn onClick={handleAddMemo}>추가</AddBtn>
       <CardContainer>
         {currentList.map((toDo: ToDo) => (
