@@ -43,6 +43,7 @@ const NewMemo = styled.textarea`
   width: 20vw;
   outline: none;
   min-height: 100px;
+  resize: none;
 `;
 
 const Card = styled.li`
@@ -89,7 +90,16 @@ const AddBtn = styled.button`
   border-radius: 10px;
 `;
 
-const TodaysDateCard = styled.p`
+const UpdateInput = styled.input`
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  outline: none;
+  color: gray;
+  font-size: 18px;
+`;
+
+const TodaysDateOnCard = styled.p`
   font-size: 15px;
 `;
 
@@ -184,17 +194,19 @@ function ToDoCards({ currentDate }: ICurrentDate) {
         {currentList.map((toDo: ToDo) => (
           <Card key={toDo.id}>
             {isUpdateBtnClicked && toDo.id === targetId ? (
-              <input
+              <UpdateInput
+                autoFocus
+                maxLength={25}
                 placeholder='수정할 내용을 입력해주세요'
                 value={updatedContent}
                 onChange={onChangeUpdatedContent}
-              ></input>
+              ></UpdateInput>
             ) : (
               toDo.text
             )}
-            <TodaysDateCard>{`${toDo.year}년 ${toDo.month + 1}월 ${
+            <TodaysDateOnCard>{`${toDo.year}년 ${toDo.month + 1}월 ${
               toDo.date
-            }일`}</TodaysDateCard>
+            }일`}</TodaysDateOnCard>
             <Btn onClick={() => handleUpdate(toDo.id, toDo.text)}>
               {isUpdateBtnClicked && toDo.id === targetId ? "완료" : "수정"}
             </Btn>
